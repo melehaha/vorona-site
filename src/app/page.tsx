@@ -154,6 +154,7 @@ export default function Page() {
   const [openCost, setOpenCost] = useState(false);
   const [openFaq, setOpenFaq] = useState(false);
   const [openDocs, setOpenDocs] = useState(false);
+  const [activeDoc, setActiveDoc] = useState<"dogovor" | "invoice">("dogovor");
 
   const [caseModalId, setCaseModalId] = useState<string | null>(null);
 
@@ -451,9 +452,15 @@ export default function Page() {
           <p className="p">Здесь будут пример договора и краткое объяснение: что подписываем и когда.</p>
 
           <div className="btnRow">
-            <button className="btn btnPrimary" onClick={() => setOpenDocs(true)}>
-              Открыть документы
-            </button>
+            <button
+  className="btn btnPrimary"
+  onClick={() => {
+    setActiveDoc("dogovor");
+    setOpenDocs(true);
+  }}
+>
+  Открыть документы
+</button>
           </div>
         </div>
       </section>
@@ -574,12 +581,47 @@ export default function Page() {
       </Modal>
 
       <Modal title="Документы" open={openDocs} onClose={() => setOpenDocs(false)}>
-        <div className="cardText">
-          <p className="p">
-            На старте можно оставить этот блок “в разработке”, а потом подключить PDF примера договора и краткий гайд “что подписываем и когда”.
-          </p>
-          <div className="small">Когда будешь готов — вставим реальные файлы и кнопки “посмотреть / скачать”.</div>
-        </div>
+        <div className="btnRow" style={{ marginBottom: 12 }}>
+  <button
+    className={`btn ${activeDoc === "dogovor" ? "btnPrimary" : ""}`}
+    onClick={() => setActiveDoc("dogovor")}
+    type="button"
+  >
+    Договор (PDF)
+  </button>
+
+  <button
+    className={`btn ${activeDoc === "invoice" ? "btnPrimary" : ""}`}
+    onClick={() => setActiveDoc("invoice")}
+    type="button"
+  >
+    Инвойс (JPG)
+  </button>
+
+  <a
+    className="btn"
+    href={activeDoc === "dogovor" ? "/docs/dogovor.pdf" : "/docs/invoice.jpg"}
+    target="_blank"
+    rel="noreferrer"
+  >
+    Открыть в новой вкладке
+  </a>
+</div>
+       <div className="card" style={{ padding: 10 }}>
+  {activeDoc === "dogovor" ? (
+    <iframe
+      title="Договор"
+      src="/docs/dogovor.pdf"
+      style={{ width: "100%", height: "70vh", border: "1px solid var(--line)", borderRadius: 12 }}
+    />
+  ) : (
+    <img
+      src="/docs/invoice.jpg"
+      alt="Инвойс"
+      style={{ width: "100%", height: "70vh", objectFit: "contain", display: "block" }}
+    />
+  )}
+</div>
       </Modal>
 
       <Modal
