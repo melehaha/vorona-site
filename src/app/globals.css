@@ -1,10 +1,10 @@
 :root {
-  --bg: #0b0d10;
-  --card: #11151b;
-  --text: #e8edf4;
-  --muted: #a8b3c2;
-  --line: rgba(255,255,255,0.10);
-  --accent: #d7e3ff;
+  --bg: #EDEDED;        /* фон страницы */
+  --card: #FFFFFF;      /* карточки/модалки */
+  --text: #222831;      /* основной текст */
+  --muted: #4B5563;     /* вторичный текст (спокойный серый) */
+  --line: rgba(34, 40, 49, 0.12); /* тонкие линии/обводки */
+  --accent: #6D8FAF;    /* акцент (кнопки/выделения) */
 }
 
 * { box-sizing: border-box; }
@@ -12,7 +12,7 @@ html, body { padding: 0; margin: 0; }
 body {
   background: var(--bg);
   color: var(--text);
-  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji","Segoe UI Emoji";
+  font-family: var(--font-inter), ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
 }
 
 a { color: inherit; text-decoration: none; }
@@ -29,7 +29,7 @@ a { color: inherit; text-decoration: none; }
   padding: 14px 0;
   gap: 12px;
 }
-.brand { font-weight: 700; letter-spacing: 0.3px; }
+.brand { font-family: var(--font-oswald), var(--font-inter), sans-serif; letter-spacing: 1px; font-weight: 700; letter-spacing: 0.3px; }
 .nav { display: flex; gap: 14px; flex-wrap: wrap; color: var(--muted); font-size: 14px; }
 .nav a:hover { color: var(--text); }
 
@@ -53,8 +53,8 @@ a { color: inherit; text-decoration: none; }
 .btnPrimary:hover { filter: brightness(0.95); }
 
 .section { padding: 64px 0; border-bottom: 1px solid var(--line); }
-.h1 { font-size: clamp(28px, 4vw, 44px); line-height: 1.05; margin: 0 0 12px; }
-.h2 { font-size: 22px; margin: 0 0 16px; }
+.h1 { font-family: var(--font-montserrat), var(--font-inter), sans-serif; font-weight: 800; font-size: clamp(28px, 4vw, 44px); line-height: 1.05; margin: 0 0 12px; }
+.h2 { font-family: var(--font-montserrat), var(--font-inter), sans-serif; font-weight: 800; font-size: 22px; margin: 0 0 16px; }
 .p { color: var(--muted); margin: 0 0 18px; line-height: 1.6; max-width: 72ch; }
 .pills { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 14px; }
 .pill {
