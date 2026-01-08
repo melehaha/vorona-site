@@ -241,7 +241,7 @@ export default function Page() {
       {/* Header */}
       <div className="header">
         <div className="container headerInner">
-          <div className="brand">Vorona.car</div>
+          <div className="brand">ВОРОНАКАР</div>
 
           <nav className="nav" aria-label="Навигация">
             <a href="#steps">Как работаем</a>
@@ -331,7 +331,7 @@ export default function Page() {
               "1) Фиксируем запрос",
               "2) Рассматриваем примеры из статистики",
               "3) Согласуем критерии",
-              "4) Договор",
+              "4) Заключаем договор",
               "5) Торги (несколько попыток — нормально)",
               "6) Логистика и статусы",
               "7) Оформление документов",
@@ -370,7 +370,7 @@ export default function Page() {
               "Логистика/доставка",
               "Таможенные платежи (по параметрам авто)",
               "Утильсбор и оформление",
-              "Комиссия Vorona.car (фиксируем заранее)",
+              "Моя комиссия (фиксируем заранее)",
             ].map((t) => (
               <div className="card" key={t}>
                 <div className="cardText">{t}</div>
@@ -467,7 +467,35 @@ export default function Page() {
             <br />
             Город: Владивосток (работаю с заказами по РФ)
           </p>
-
+<div className="card" style={{ marginTop: 12 }}>
+  <div className="cardTitle">Ссылки</div>
+  <div className="cardText" style={{ display: "grid", gap: 8, marginTop: 8 }}>
+    <div>
+      <span className="kbd">Instagram</span>{" "}
+      <a href="https://instagram.com/vorona.car" target="_blank" rel="noreferrer">
+        @vorona.car
+      </a>
+    </div>
+    <div>
+      <span className="kbd">YouTube</span>{" "}
+      <a href="https://www.youtube.com/@VORONACAR" target="_blank" rel="noreferrer">
+        Обзоры (канал)
+      </a>
+    </div>
+    <div>
+      <span className="kbd">VK</span>{" "}
+      <a href="https://vk.com/meleshkoilia" target="_blank" rel="noreferrer">
+        Ссылка на VK
+      </a>
+    </div>
+    <div>
+      <span className="kbd">TG-бот</span>{" "}
+      <a href="https://t.me/voronacar_bot" target="_blank" rel="noreferrer">
+        Ссылка на бот
+      </a>
+    </div>
+  </div>
+</div>
           <div className="btnRow">
             <a className="btn" href={`https://t.me/${TG}`} target="_blank" rel="noreferrer">
               Написать в Telegram
@@ -479,7 +507,7 @@ export default function Page() {
         </div>
       </section>
 
-      <div className="container footer">© {new Date().getFullYear()} Vorona.car</div>
+      <div className="container footer">© {new Date().getFullYear()} ВОРОНАКАР | ИП Мелешко Илья Андреевич</div>
 
       {/* Modals */}
       <Modal title="Оставить заявку" open={openLead} onClose={() => setOpenLead(false)}>
@@ -492,7 +520,7 @@ export default function Page() {
             <li>Фиксируем запрос (что важно / что точно не подходит).</li>
             <li>Рассматриваем примеры из статистики (что реально покупается в бюджет).</li>
             <li>Согласуем критерии и стратегию ставок.</li>
-            <li>Договор.</li>
+            <li>Заключаем договор.</li>
             <li>Торги (несколько попыток — нормально).</li>
             <li>Логистика и статусы.</li>
             <li>Оформление документов.</li>
@@ -522,7 +550,7 @@ export default function Page() {
             <li>Таможенные платежи</li>
             <li>Утильсбор / оформление</li>
             <li>Документы (если требуется)</li>
-            <li>Комиссия Vorona.car</li>
+            <li>Моя комиссия</li>
           </ul>
 
           <div style={{ marginTop: 12 }}>
