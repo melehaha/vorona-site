@@ -587,6 +587,66 @@ export default function Page() {
         </div>
       </Modal>
 
+<Modal title="Обо мне" open={openAbout} onClose={() => setOpenAbout(false)}>
+  <div className="grid grid2">
+    <div className="card">
+      <img
+        src="/img/ilya.jpg"
+        alt="Илья Мелешко"
+        style={{ width: "100%", borderRadius: 14, display: "block" }}
+      />
+      <div className="small" style={{ marginTop: 10 }}>
+        Владивосток • авто из Японии под заказ
+      </div>
+    </div>
+
+    <div className="card">
+      <div className="cardText">
+        <p style={{ marginTop: 0 }}>
+          Меня зовут <b>Илья</b>. Я живу во Владивостоке и занимаюсь привозом авто из Японии под заказ.
+        </p>
+
+        <p>
+          Это мой проект: без анонимности и “передач по менеджерам”. Вы общаетесь напрямую со мной — и я отвечаю за процесс
+          и результат.
+        </p>
+
+        <p style={{ marginBottom: 10 }}>
+          Я показываю структуру расходов, статусы по этапам и документы — чтобы у вас не оставалось ощущения “что-то скрывают”.
+        </p>
+
+        <div style={{ display: "grid", gap: 8, marginTop: 12 }}>
+          <div>
+            <span className="kbd">Telegram</span>{" "}
+            <a href="https://t.me/melehaha" target="_blank" rel="noreferrer">
+              @melehaha
+            </a>
+          </div>
+          <div>
+            <span className="kbd">Instagram</span>{" "}
+            <a href="https://instagram.com/vorona.car" target="_blank" rel="noreferrer">
+              @vorona.car
+            </a>
+          </div>
+        </div>
+
+        <div className="btnRow" style={{ marginTop: 14 }}>
+          <a className="btn" href="https://t.me/melehaha" target="_blank" rel="noreferrer">
+            Написать в Telegram
+          </a>
+          <button className="btn btnPrimary" onClick={() => setOpenLead(true)}>
+            Оставить заявку
+          </button>
+        </div>
+
+        <div className="small" style={{ marginTop: 10 }}>
+          Я рядом, если нужно подсказать и честно оценить, что реально купить в ваш бюджет.
+        </div>
+      </div>
+    </div>
+  </div>
+</Modal>
+      
       <Modal title="Документы" open={openDocs} onClose={() => setOpenDocs(false)}>
         <div className="btnRow" style={{ marginBottom: 12 }}>
   <button
