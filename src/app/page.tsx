@@ -286,6 +286,35 @@ export default function Page() {
         <div className="container">
           <h1 className="h1">Авто из Японии под заказ</h1>
           <p className="p">
+            <div className="card" style={{ marginTop: 16 }}>
+  <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
+    <img
+      src="/img/ilya.jpg"
+      alt="Илья Мелешко"
+      style={{
+        width: 54,
+        height: 54,
+        borderRadius: "50%",
+        objectFit: "cover",
+        border: "1px solid var(--line)",
+        flex: "0 0 auto",
+      }}
+    />
+
+    <div style={{ flex: 1 }}>
+      <div className="cardTitle" style={{ marginBottom: 4 }}>
+        Илья, Владивосток — отвечаю лично
+      </div>
+      <div className="cardText">
+        Прозрачные расходы • документы на этапах • без менеджеров
+      </div>
+    </div>
+
+    <button className="btn" onClick={() => setOpenAbout(true)} type="button">
+      Обо мне
+    </button>
+  </div>
+</div>
             Подбираю, выкупаю на аукционах и веду сделку до выдачи. Общение напрямую со мной — без цепочек “менеджер → менеджер”.
           </p>
 
