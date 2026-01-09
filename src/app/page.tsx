@@ -244,7 +244,17 @@ export default function Page() {
       <div className="header">
         <div className="container headerInner">
           <div className="brand" style={{ display: "flex", alignItems: "center", gap: 10 }}>
-  <img src="/img/logo.png" alt="ВОРОНАКАР" style={{ width: 24, height: 24 }} />
+  <img
+  src="/img/logo.png"
+  alt="ВОРОНАКАР"
+  style={{
+    width: 28,
+    height: 28,
+    borderRadius: "50%",
+    objectFit: "cover",
+    border: "1px solid var(--line)",
+  }}
+/>
   <span>ВОРОНАКАР</span>
 </div>
 
