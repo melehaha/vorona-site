@@ -154,6 +154,7 @@ export default function Page() {
   const [openCost, setOpenCost] = useState(false);
   const [openFaq, setOpenFaq] = useState(false);
   const [openDocs, setOpenDocs] = useState(false);
+  const [openAbout, setOpenAbout] = useState(false);
   const [activeDoc, setActiveDoc] = useState<"dogovor" | "invoice">("dogovor");
 
   const [caseModalId, setCaseModalId] = useState<string | null>(null);
@@ -242,9 +243,15 @@ export default function Page() {
       {/* Header */}
       <div className="header">
         <div className="container headerInner">
-          <div className="brand">ВОРОНАКАР</div>
+          <div className="brand" style={{ display: "flex", alignItems: "center", gap: 10 }}>
+  <img src="/img/logo.png" alt="ВОРОНАКАР" style={{ width: 24, height: 24 }} />
+  <span>ВОРОНАКАР</span>
+</div>
 
           <nav className="nav" aria-label="Навигация">
+            <button className="navLink" onClick={() => setOpenAbout(true)} type="button">
+  Обо мне
+</button>
             <a href="#steps">Как работаем</a>
             <a href="#cost">Стоимость</a>
             <a href="#cases">Кейсы</a>
