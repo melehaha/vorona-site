@@ -5,8 +5,9 @@ const montserrat = Montserrat({ subsets: ["latin", "cyrillic"], weight: ["800"],
 const oswald = Oswald({ subsets: ["latin", "cyrillic"], variable: "--font-oswald" });
 
 export const metadata = {
-  title: "Vorona.car — авто из Японии под заказ",
-  description: "Привоз авто из Японии под заказ. Прозрачные расходы по Японии, минимальная комиссия, без менеджеров.",
+  title: "Авто из Японии под заказ — привезти машину в РФ | ВОРОНАКАР",
+  description:
+    "Помогаю привезти авто из Японии под заказ: прозрачные расходы, договор, документы на этапах. Владивосток — работаю с заказами по РФ.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
