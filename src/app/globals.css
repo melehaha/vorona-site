@@ -172,3 +172,115 @@ a { color: inherit; text-decoration: none; }
 .timelineText {
   color: var(--muted);
 }
+
+/* ========== Mobile tweaks ========== */
+
+/* Базовая защита от горизонтального скролла */
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* Контейнер — больше воздуха по бокам на мобиле */
+.container {
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+/* Кнопки/ряды — чтобы не распирало */
+.btnRow {
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* Пилюли — перенос */
+.pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* Карточки — чуть компактнее */
+.card {
+  padding: 16px;
+}
+
+/* Модалка — не вылезает за экран */
+.modal {
+  width: min(720px, calc(100vw - 24px));
+  max-height: calc(100vh - 24px);
+  overflow: auto;
+}
+
+/* Поля формы — нормальная ширина */
+.input, .textarea {
+  width: 100%;
+}
+
+/* ======== Breakpoint: <= 900px (планшеты/малые ноуты) ======== */
+@media (max-width: 900px) {
+  .grid2, .grid3 {
+    grid-template-columns: 1fr;
+  }
+
+  .headerInner {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .nav {
+    width: 100%;
+    overflow-x: auto;
+    white-space: nowrap;
+    padding-bottom: 6px;
+  }
+
+  /* чтобы ссылки в nav не слипались */
+  .nav a, .nav button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 10px;
+    border-radius: 10px;
+  }
+}
+
+/* ======== Breakpoint: <= 560px (телефоны) ======== */
+@media (max-width: 560px) {
+  .h1 {
+    font-size: clamp(28px, 7vw, 36px);
+    line-height: 1.1;
+  }
+
+  .h2 {
+    font-size: clamp(20px, 5.5vw, 26px);
+    line-height: 1.2;
+  }
+
+  .p {
+    font-size: 15px;
+    line-height: 1.45;
+  }
+
+  /* Кнопки в столбик */
+  .btnRow {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Сетка полей формы в одну колонку */
+  .fieldGrid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Таймлайн — чуть компактнее */
+  .timeline {
+    padding-left: 12px;
+    gap: 12px;
+  }
+}
