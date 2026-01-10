@@ -309,76 +309,115 @@ export default function Page() {
   return (
     <>
       {/* Header */}
-      <div className="header">
-        <div className="container headerInner">
-  <div className="brand" style={{ display: "flex", alignItems: "center", gap: 10 }}>
-    <img
-      src="/img/logo.png"
-      alt="ВОРОНАКАР"
-      style={{
-        width: 28,
-        height: 28,
-        borderRadius: "50%",
-        objectFit: "cover",
-        border: "1px solid var(--line)",
-      }}
-    />
-    <span>ВОРОНАКАР</span>
-  </div>
+<div className="header">
+  <div className="container headerInner">
+    <div className="brand" style={{ display: "flex", alignItems: "center", gap: 10 }}>
+      <img
+        src="/img/logo.png"
+        alt="ВОРОНАКАР"
+        style={{
+          width: 28,
+          height: 28,
+          borderRadius: "50%",
+          objectFit: "cover",
+          border: "1px solid var(--line)",
+        }}
+      />
+      <span>ВОРОНАКАР</span>
+    </div>
 
-  {/* Desktop nav */}
-  <nav className="nav navDesktop" aria-label="Навигация">
-    <a href="#steps">Как я работаю</a>
-    <a href="#cost">Стоимость</a>
-    <a href="#cases">Кейсы</a>
-    <a href="#faq">FAQ</a>
-    <a href="#docs">Документы</a>
-    <a href="#contacts">Контакты</a>
-  </nav>
+    {/* Desktop nav */}
+    <nav className="nav navDesktop" aria-label="Навигация">
+      <a href="#steps">Как я работаю</a>
+      <a href="#cost">Стоимость</a>
+      <a href="#cases">Кейсы</a>
+      <a href="#faq">FAQ</a>
+      <a href="#docs">Документы</a>
+      <a href="#contacts">Контакты</a>
+    </nav>
 
-  {/* Desktop buttons */}
-  <div className="btnRow btnRowDesktop">
-    <a className="btn" href={tgLink} target="_blank" rel="noreferrer">
-      Написать в Telegram
-    </a>
-    <button className="btn btnPrimary" onClick={() => setOpenLead(true)}>
-      Оставить заявку
+    {/* Desktop buttons */}
+    <div className="btnRow btnRowDesktop">
+      <a className="btn" href={tgLink} target="_blank" rel="noreferrer">
+        Написать в Telegram
+      </a>
+      <button className="btn btnPrimary" onClick={() => setOpenLead(true)} type="button">
+        Оставить заявку
+      </button>
+    </div>
+
+    {/* Burger (mobile) */}
+    <button
+      className="burger"
+      type="button"
+      aria-label="Открыть меню"
+      aria-expanded={navOpen}
+      onClick={() => setNavOpen(true)}
+    >
+      <span />
+      <span />
+      <span />
     </button>
   </div>
-
-  {/* Burger (mobile) */}
-  <button
-    className="burger"
-    type="button"
-    aria-label="Открыть меню"
-    aria-expanded={navOpen}
-    onClick={() => setNavOpen(true)}
-  >
-    <span />
-    <span />
-    <span />
-  </button>
 </div>
 
-          <nav className="nav" aria-label="Навигация">
-            <a href="#steps">Как я работаю</a>
-            <a href="#cost">Стоимость</a>
-            <a href="#cases">Кейсы</a>
-            <a href="#faq">FAQ</a>
-            <a href="#docs">Документы</a>
-            <a href="#contacts">Контакты</a>
-          </nav>
-
-          <div className="btnRow">
-            <a className="btn" href={tgLink} target="_blank" rel="noreferrer">
-              Написать в Telegram
-            </a>
-            <button className="btn btnPrimary" onClick={() => setOpenLead(true)}>
-              Оставить заявку
-            </button>
-          </div>
-        </div>
+      {/* Drawer (mobile menu) */}
+{navOpen && (
+  <div
+    className="drawerOverlay"
+    role="dialog"
+    aria-modal="true"
+    onMouseDown={(e) => {
+      if (e.target === e.currentTarget) setNavOpen(false);
+    }}
+  >
+    <div className="drawer">
+      <div className="drawerHeader">
+        <div className="drawerTitle">Меню</div>
+        <button className="btn drawerClose" onClick={() => setNavOpen(false)} aria-label="Закрыть меню" type="button">
+          ✕
+        </button>
       </div>
+
+      <div className="drawerBody">
+        <a className="drawerLink" href="#steps" onClick={() => setNavOpen(false)}>
+          Как я работаю
+        </a>
+        <a className="drawerLink" href="#cost" onClick={() => setNavOpen(false)}>
+          Стоимость
+        </a>
+        <a className="drawerLink" href="#cases" onClick={() => setNavOpen(false)}>
+          Кейсы
+        </a>
+        <a className="drawerLink" href="#faq" onClick={() => setNavOpen(false)}>
+          FAQ
+        </a>
+        <a className="drawerLink" href="#docs" onClick={() => setNavOpen(false)}>
+          Документы
+        </a>
+        <a className="drawerLink" href="#contacts" onClick={() => setNavOpen(false)}>
+          Контакты
+        </a>
+
+        <div style={{ height: 12 }} />
+
+        <a className="btn" href={tgLink} target="_blank" rel="noreferrer" onClick={() => setNavOpen(false)}>
+          Написать в Telegram
+        </a>
+        <button
+          className="btn btnPrimary"
+          type="button"
+          onClick={() => {
+            setNavOpen(false);
+            setOpenLead(true);
+          }}
+        >
+          Оставить заявку
+        </button>
+      </div>
+    </div>
+  </div>
+)}
 
 {navOpen && (
   <div
