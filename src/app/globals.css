@@ -284,3 +284,179 @@ html, body {
     gap: 12px;
   }
 }
+
+/* ===== Burger & Drawer ===== */
+
+.burger {
+  display: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: var(--card);
+  padding: 10px;
+  cursor: pointer;
+}
+
+.burger span {
+  display: block;
+  height: 2px;
+  background: var(--text);
+  border-radius: 999px;
+  margin: 6px 0;
+}
+
+.navDesktop,
+.btnRowDesktop {
+  display: flex;
+}
+
+/* Drawer overlay */
+.drawerOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 9999;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.drawer {
+  width: min(360px, 92vw);
+  height: 100%;
+  background: var(--card);
+  border-left: 1px solid var(--line);
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+}
+
+.drawerHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--line);
+}
+
+.drawerTitle {
+  font-weight: 800;
+}
+
+.drawerClose {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.drawerBody {
+  padding-top: 12px;
+  display: grid;
+  gap: 10px;
+}
+
+.drawerLink {
+  display: block;
+  padding: 12px 12px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: var(--bg);
+  color: var(--text);
+  text-decoration: none;
+}
+
+/* ===== Modal mobile UX ===== */
+
+.modalClose {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modalHeader {
+  position: sticky;
+  top: 0;
+  background: var(--card);
+  z-index: 2;
+  border-bottom: 1px solid var(--line);
+}
+
+.modalBody {
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.modalFooter {
+  display: none; /* по умолчанию прячем, на мобиле покажем */
+  position: sticky;
+  bottom: 0;
+  background: var(--card);
+  border-top: 1px solid var(--line);
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+
+/* Документы внутри модалки */
+.docCard {
+  padding: 10px;
+}
+
+.docFrame {
+  width: 100%;
+  height: 70vh;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+
+.docImage {
+  width: 100%;
+  height: 70vh;
+  object-fit: contain;
+  display: block;
+}
+
+/* ===== Breakpoint: mobile ===== */
+@media (max-width: 900px) {
+  .navDesktop,
+  .btnRowDesktop {
+    display: none;
+  }
+
+  .burger {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 560px) {
+  .modal {
+    width: calc(100vw - 16px);
+    height: calc(100vh - 16px);
+    max-height: calc(100vh - 16px);
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .modalBody {
+    flex: 1;
+    padding-bottom: 8px;
+  }
+
+  .modalFooter {
+    display: block;
+  }
+
+  .docFrame,
+  .docImage {
+    height: 72vh;
+  }
+}
