@@ -40,7 +40,15 @@ function Modal({
             ✕
           </button>
         </div>
+
         <div className="modalBody">{children}</div>
+
+        {/* На мобиле будет видна, на десктопе спрячем через CSS */}
+        <div className="modalFooter">
+          <button className="btn btnPrimary" type="button" onClick={onClose}>
+            Закрыть
+          </button>
+        </div>
       </div>
     </div>
   );
@@ -53,6 +61,7 @@ function LeadForm({ tgUsername }: { tgUsername: string }) {
   const [car, setCar] = useState("");
   const [budget, setBudget] = useState("");
   const [comment, setComment] = useState("");
+  const [navOpen, setNavOpen] = useState(false);
 
   const canSend = phone.trim().length >= 5 && car.trim().length >= 2;
 
@@ -302,20 +311,54 @@ export default function Page() {
       {/* Header */}
       <div className="header">
         <div className="container headerInner">
-          <div className="brand" style={{ display: "flex", alignItems: "center", gap: 10 }}>
-            <img
-              src="/img/logo.png"
-              alt="ВОРОНАКАР"
-              style={{
-                width: 28,
-                height: 28,
-                borderRadius: "50%",
-                objectFit: "cover",
-                border: "1px solid var(--line)",
-              }}
-            />
-            <span>ВОРОНАКАР</span>
-          </div>
+  <div className="brand" style={{ display: "flex", alignItems: "center", gap: 10 }}>
+    <img
+      src="/img/logo.png"
+      alt="ВОРОНАКАР"
+      style={{
+        width: 28,
+        height: 28,
+        borderRadius: "50%",
+        objectFit: "cover",
+        border: "1px solid var(--line)",
+      }}
+    />
+    <span>ВОРОНАКАР</span>
+  </div>
+
+  {/* Desktop nav */}
+  <nav className="nav navDesktop" aria-label="Навигация">
+    <a href="#steps">Как я работаю</a>
+    <a href="#cost">Стоимость</a>
+    <a href="#cases">Кейсы</a>
+    <a href="#faq">FAQ</a>
+    <a href="#docs">Документы</a>
+    <a href="#contacts">Контакты</a>
+  </nav>
+
+  {/* Desktop buttons */}
+  <div className="btnRow btnRowDesktop">
+    <a className="btn" href={tgLink} target="_blank" rel="noreferrer">
+      Написать в Telegram
+    </a>
+    <button className="btn btnPrimary" onClick={() => setOpenLead(true)}>
+      Оставить заявку
+    </button>
+  </div>
+
+  {/* Burger (mobile) */}
+  <button
+    className="burger"
+    type="button"
+    aria-label="Открыть меню"
+    aria-expanded={navOpen}
+    onClick={() => setNavOpen(true)}
+  >
+    <span />
+    <span />
+    <span />
+  </button>
+</div>
 
           <nav className="nav" aria-label="Навигация">
             <a href="#steps">Как я работаю</a>
@@ -337,6 +380,62 @@ export default function Page() {
         </div>
       </div>
 
+{navOpen && (
+  <div
+    className="drawerOverlay"
+    role="dialog"
+    aria-modal="true"
+    onMouseDown={(e) => {
+      if (e.target === e.currentTarget) setNavOpen(false);
+    }}
+  >
+    <div className="drawer">
+      <div className="drawerHeader">
+        <div className="drawerTitle">Меню</div>
+        <button className="btn drawerClose" onClick={() => setNavOpen(false)} aria-label="Закрыть меню">
+          ✕
+        </button>
+      </div>
+
+      <div className="drawerBody">
+        <a className="drawerLink" href="#steps" onClick={() => setNavOpen(false)}>
+          Как я работаю
+        </a>
+        <a className="drawerLink" href="#cost" onClick={() => setNavOpen(false)}>
+          Стоимость
+        </a>
+        <a className="drawerLink" href="#cases" onClick={() => setNavOpen(false)}>
+          Кейсы
+        </a>
+        <a className="drawerLink" href="#faq" onClick={() => setNavOpen(false)}>
+          FAQ
+        </a>
+        <a className="drawerLink" href="#docs" onClick={() => setNavOpen(false)}>
+          Документы
+        </a>
+        <a className="drawerLink" href="#contacts" onClick={() => setNavOpen(false)}>
+          Контакты
+        </a>
+
+        <div style={{ height: 12 }} />
+
+        <a className="btn" href={tgLink} target="_blank" rel="noreferrer" onClick={() => setNavOpen(false)}>
+          Написать в Telegram
+        </a>
+        <button
+          className="btn btnPrimary"
+          onClick={() => {
+            setNavOpen(false);
+            setOpenLead(true);
+          }}
+        >
+          Оставить заявку
+        </button>
+      </div>
+    </div>
+  </div>
+)}
+    
       {/* Hero */}
       <section className="section">
         <div className="container">
@@ -775,21 +874,14 @@ export default function Page() {
           </a>
         </div>
 
-        <div className="card" style={{ padding: 10 }}>
-          {activeDoc === "dogovor" ? (
-            <iframe
-              title="Договор"
-              src="/docs/dogovor.pdf"
-              style={{ width: "100%", height: "70vh", border: "1px solid var(--line)", borderRadius: 12 }}
-            />
-          ) : (
-            <img
-              src="/docs/invoice.jpg"
-              alt="Инвойс"
-              style={{ width: "100%", height: "70vh", objectFit: "contain", display: "block" }}
-            />
-          )}
-        </div>
+        <div className="card docCard">
+  {activeDoc === "dogovor" ? (
+    <iframe title="Договор" src="/docs/dogovor.pdf" className="docFrame" />
+  ) : (
+    <img src="/docs/invoice.jpg" alt="Инвойс" className="docImage" />
+  )}
+</div>
+          
       </Modal>
 
       <Modal title={currentCase?.modalTitle ?? "Кейс"} open={caseModalId !== null} onClose={() => setCaseModalId(null)}>
