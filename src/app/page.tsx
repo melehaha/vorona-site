@@ -180,6 +180,7 @@ export default function Page() {
 
   const [openLead, setOpenLead] = useState(false);
   const [openCost, setOpenCost] = useState(false);
+  const [navOpen, setNavOpen] = useState(false);
   const [openFaq, setOpenFaq] = useState(false);
   const [openDocs, setOpenDocs] = useState(false);
   const [openAbout, setOpenAbout] = useState(false);
