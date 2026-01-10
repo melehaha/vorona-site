@@ -259,9 +259,6 @@ export default function Page() {
 </div>
 
           <nav className="nav" aria-label="Навигация">
-            <button className="navLink" onClick={() => setOpenAbout(true)} type="button">
-  Обо мне
-</button>
             <a href="#steps">Как работаем</a>
             <a href="#cost">Стоимость</a>
             <a href="#cases">Кейсы</a>
@@ -285,6 +282,12 @@ export default function Page() {
 <section className="section">
   <div className="container">
     <h1 className="h1">Авто из Японии под заказ</h1>
+
+    <p className="p" style={{ marginTop: 14 }}>
+      Подбираю, выкупаю на аукционах и веду сделку до выдачи. Общение напрямую со мной — без цепочек “менеджер → менеджер”.
+      <br />
+      Помогаю привезти авто из Японии под заказ: от подбора и торгов до выдачи и документов.
+    </p>
 
     <div className="card" style={{ marginTop: 16 }}>
       <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
@@ -314,12 +317,6 @@ export default function Page() {
       </div>
     </div>
 
-    <p className="p" style={{ marginTop: 14 }}>
-      Подбираю, выкупаю на аукционах и веду сделку до выдачи. Общение напрямую со мной — без цепочек “менеджер → менеджер”.
-      <br />
-      Помогаю привезти авто из Японии под заказ: от подбора и торгов до выдачи и документов.
-    </p>
-
     <div className="btnRow" style={{ marginTop: 14 }}>
       <a className="btn" href={`https://t.me/${TG}`} target="_blank" rel="noreferrer">
         Написать в Telegram
@@ -341,7 +338,7 @@ export default function Page() {
       {/* Trust */}
       <section className="section">
         <div className="container">
-          <h2 className="h2">Без сюрпризов “в конце”. Всё объясняю заранее.</h2>
+          <h2 className="h2">Почему со мной спокойнее</h2>
           <div className="grid grid2">
             <div className="card">
               <div className="cardTitle">Прозрачные расходы по Японии</div>
@@ -362,9 +359,6 @@ export default function Page() {
           </div>
 
           <div style={{ marginTop: 14 }}>
-            <button className="btn btnPrimary" onClick={() => setOpenSteps(true)}>
-              Посмотреть этапы подробно
-            </button>
           </div>
         </div>
       </section>
@@ -372,25 +366,66 @@ export default function Page() {
       {/* Steps */}
       <section className="section" id="steps">
         <div className="container">
-          <h2 className="h2">Как проходит заказ</h2>
+          <h2 className="h2">Этапы заказа</h2>
           <p className="p">Коротко: заявка → подбор → критерии → договор → торги → логистика → оформление → выдача.</p>
 
-          <div className="grid grid2">
-            {[
-              "1) Фиксируем запрос",
-              "2) Рассматриваем примеры из статистики",
-              "3) Согласуем критерии",
-              "4) Заключаем договор",
-              "5) Торги (несколько попыток — нормально)",
-              "6) Логистика и статусы",
-              "7) Оформление документов",
-              "8) Выдача и закрытие сделки",
-            ].map((t) => (
-              <div className="card" key={t}>
-                <div className="cardText">{t}</div>
-              </div>
-            ))}
-          </div>
+<div className="timeline">
+  <div className="timelineItem">
+    <div className="timelineDot" />
+    <div>
+      <div className="timelineTitle">1. Фиксируем запрос</div>
+      <div className="timelineText">Модель, бюджет, критерии, город получения.</div>
+    </div>
+  </div>
+
+  <div className="timelineItem">
+    <div className="timelineDot" />
+    <div>
+      <div className="timelineTitle">2. Рассматриваем примеры из статистики</div>
+      <div className="timelineText">Показываю реальные продажи, чтобы ожидания были в рынке.</div>
+    </div>
+  </div>
+
+  <div className="timelineItem">
+    <div className="timelineDot" />
+    <div>
+      <div className="timelineTitle">3. Согласуем критерии</div>
+      <div className="timelineText">Оценка, пробег, комплектация, что критично, а что нет.</div>
+    </div>
+  </div>
+
+  <div className="timelineItem">
+    <div className="timelineDot" />
+    <div>
+      <div className="timelineTitle">4. Заключаем договор</div>
+      <div className="timelineText">Фиксируем условия и двигаемся по этапам.</div>
+    </div>
+  </div>
+
+  <div className="timelineItem">
+    <div className="timelineDot" />
+    <div>
+      <div className="timelineTitle">5. Торги и покупка</div>
+      <div className="timelineText">Ставим только на согласованные варианты.</div>
+    </div>
+  </div>
+
+  <div className="timelineItem">
+    <div className="timelineDot" />
+    <div>
+      <div className="timelineTitle">6. Логистика и оформление</div>
+      <div className="timelineText">Доставка, таможня, документы. Держу в курсе статуса.</div>
+    </div>
+  </div>
+
+  <div className="timelineItem">
+    <div className="timelineDot" />
+    <div>
+      <div className="timelineTitle">7. Выдача и отправка по РФ</div>
+      <div className="timelineText">Во Владивостоке или отправка в ваш регион.</div>
+    </div>
+  </div>
+</div>
 
           <div className="btnRow" style={{ marginTop: 14 }}>
             <button className="btn" onClick={() => setOpenSteps(true)}>
@@ -501,7 +536,7 @@ export default function Page() {
       <section className="section" id="docs">
         <div className="container">
           <h2 className="h2">Документы</h2>
-          <p className="p">Здесь будут пример договора и краткое объяснение: что подписываем и когда.</p>
+          <p className="p">Примеры документов</p>
 
           <div className="btnRow">
             <button
@@ -520,7 +555,7 @@ export default function Page() {
       {/* Contacts */}
       <section className="section" id="contacts">
         <div className="container">
-          <h2 className="h2">Связаться</h2>
+          <h2 className="h2">Контакты</h2>
           <p className="p">
             Telegram: <span className="kbd">@{TG}</span>
             <br />
@@ -529,12 +564,6 @@ export default function Page() {
 <div className="card" style={{ marginTop: 12 }}>
   <div className="cardTitle">Ссылки</div>
   <div className="cardText" style={{ display: "grid", gap: 8, marginTop: 8 }}>
-    <div>
-      <span className="kbd">Instagram</span>{" "}
-      <a href="https://instagram.com/vorona.car" target="_blank" rel="noreferrer">
-        @vorona.car
-      </a>
-    </div>
     <div>
       <span className="kbd">YouTube</span>{" "}
       <a href="https://www.youtube.com/@VORONACAR" target="_blank" rel="noreferrer">
